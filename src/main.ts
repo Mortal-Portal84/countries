@@ -1,15 +1,14 @@
 import './style.scss'
 // @ts-ignore
 import * as bootstrap from 'bootstrap'
-import { Country } from './types'
-import { appendRow } from './append'
+import { getDataFromAPI } from './api-data'
+import { createTableRow } from './dom-elements'
 
-const getDataFromAPI = (): Promise<Country[]> => fetch('https://restcountries.com/v3.1/all')
-    .then(response => response.json())
-    .then(result => result)
+const tabBody = document.getElementById('tableBody') as HTMLTableElement
 
-console.log(getDataFromAPI())
+const appendTableData = async () => {
+  const countriesList = await getDataFromAPI()
+  tabBody.append(...countriesList.map((country) => createTableRow(country)))
+}
 
-// getDataFromAPI().then(countryList => )
-
-
+appendTableData().then()
