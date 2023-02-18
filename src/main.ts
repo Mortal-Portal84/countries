@@ -1,14 +1,31 @@
 import './style.scss'
 // @ts-ignore
 import * as bootstrap from 'bootstrap'
-import { getDataFromAPI } from './api-data'
+import { getCountriesList, getCountryByName } from './api-data'
 import { createTableRow } from './dom-elements'
+import { Country } from './types'
 
 const tabBody = document.getElementById('tableBody') as HTMLTableElement
+const searchInput = document.getElementById('input') as HTMLInputElement
+const searchForm = document.getElementById('form') as HTMLFormElement
+const searchBtn = document.getElementById('btn') as HTMLButtonElement
 
-const appendTableData = async () => {
-  const countriesList = await getDataFromAPI()
-  tabBody.append(...countriesList.map((country) => createTableRow(country)))
+const appendTableData = async (searchQuery: Promise<Country[]>) => {
+  const countriesList = await searchQuery
+  tabBody.append(...countriesList.map((country: Country) => createTableRow(country)))
 }
 
-appendTableData().then()
+appendTableData(getCountriesList()).then()
+
+const clearTable = () => tabBody.innerHTML = ''
+searchBtn.addEventListener('click', () => {
+  clearTable()
+  appendTableData(getCountryByName(searchInput.value)).then()
+})
+
+searchForm.addEventListener('submit', (event) => {
+  event.preventDefault()
+  clearTable()
+  appendTableData(getCountryByName(searchInput.value)).then()
+})
+
