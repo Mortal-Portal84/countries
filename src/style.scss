@@ -1,1 +1,15 @@
 @import "node_modules/bootstrap/scss/bootstrap";
+
+.not-found {
+  display: block;
+  visibility: visible;
+  height: 300px;
+  text-align: center;
+  vertical-align: middle;
+  font-size: 3rem;
+}
+
+.not-found.hidden {
+  display: none;
+}
+
