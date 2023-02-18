@@ -8,24 +8,21 @@ import { Country } from './types'
 const tabBody = document.getElementById('tableBody') as HTMLTableElement
 const searchInput = document.getElementById('input') as HTMLInputElement
 const searchForm = document.getElementById('form') as HTMLFormElement
-const searchBtn = document.getElementById('btn') as HTMLButtonElement
 
 const appendTableData = async (searchQuery: Promise<Country[]>) => {
-  const countriesList = await searchQuery
-  tabBody.append(...countriesList.map((country: Country) => createTableRow(country)))
+  try {
+    const countriesList = await searchQuery
+    tabBody.append(...countriesList?.map((country: Country) => createTableRow(country)))
+  } catch (error) {
+    alert('Country was not found!')
+  }
 }
 
 appendTableData(getCountriesList()).then()
 
-const clearTable = () => tabBody.innerHTML = ''
-searchBtn.addEventListener('click', () => {
-  clearTable()
-  appendTableData(getCountryByName(searchInput.value)).then()
-})
-
 searchForm.addEventListener('submit', (event) => {
   event.preventDefault()
-  clearTable()
+  tabBody.innerHTML = ''
   appendTableData(getCountryByName(searchInput.value)).then()
 })
 
