@@ -20,4 +20,3 @@ export const createTableRow = (country: Country): HTMLTableRowElement => {
 
   return tabRow
 }
-

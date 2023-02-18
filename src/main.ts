@@ -1,14 +1,23 @@
-import './style.scss'
 // @ts-ignore
 import * as bootstrap from 'bootstrap'
-import { getDataFromAPI } from './api-data'
+import { getCountriesList, getCountryByName } from './api-data'
 import { createTableRow } from './dom-elements'
+import { Country } from './types'
+import './style.scss'
 
-const tabBody = document.getElementById('tableBody') as HTMLTableElement
+const tableBody = document.getElementById('tableBody') as HTMLTableCellElement
+const searchInput = document.getElementById('input') as HTMLInputElement
+const searchForm = document.getElementById('form') as HTMLFormElement
+const notFound = document.querySelector('.not-found') as HTMLTableRowElement
 
-const appendTableData = async () => {
-  const countriesList = await getDataFromAPI()
-  tabBody.append(...countriesList.map((country) => createTableRow(country)))
-}
+getCountriesList().then(result => tableBody.append(...result?.map((country: Country) => createTableRow(country))))
 
-appendTableData().then()
+searchForm.addEventListener('submit',(event) => {
+  event.preventDefault()
+  notFound.classList.add('hidden')
+  tableBody.innerHTML = ''
+    getCountryByName(searchInput.value)
+      .then(response => response?.length
+        ? tableBody.append(...response.map((country) => createTableRow(country)))
+        : notFound.classList.remove('hidden'))
+})

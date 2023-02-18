@@ -4,15 +4,15 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + TS</title>
+    <title>Rest Countries</title>
   </head>
   <body>
     <div id="app">
       <div class="container">
         <nav class="navbar bg-body-tertiary">
           <div class="container-fluid">
-            <form class="d-flex" role="search">
-              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <form class="d-flex" role="search" id="form">
+              <input class="form-control me-2" id="input" required autocomplete="off" type="search" placeholder="Search" aria-label="Search">
               <button class="btn btn-outline-success" type="submit" id="btn">Search</button>
             </form>
           </div>
@@ -27,9 +27,9 @@
               <th scope="col">Flag</th>
             </tr>
             </thead>
-            <tbody id="tableBody">
-            </tbody>
+            <tbody id="tableBody"></tbody>
           </table>
+            <div class="not-found hidden">Country was not found!</div>
         </main>
       </div>
     </div>
