@@ -10,7 +10,7 @@ const searchInput = document.getElementById('input') as HTMLInputElement
 const searchForm = document.getElementById('form') as HTMLFormElement
 const notFound = document.querySelector('.not-found') as HTMLTableRowElement
 
-// getCountriesList().then(result => tableBody.append(...result?.map((country: Country) => createTableRow(country))))
+getCountriesList().then(result => tableBody.append(...result?.map((country: Country) => createTableRow(country))))
 
 searchForm.addEventListener('submit',(event) => {
   event.preventDefault()
