@@ -21,3 +21,5 @@ searchForm.addEventListener('submit',(event) => {
         ? tableBody.append(...response.map((country) => createTableRow(country)))
         : notFound.classList.remove('hidden'))
 })
+
+getCountryByName('Belarus').then(result => console.log(result))
