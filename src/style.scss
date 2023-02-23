@@ -13,34 +13,9 @@
   display: none;
 }
 
-main {
-  position: relative;
-}
-
-.card {
-  position: fixed;
-  top: 65px;
-  left: 15%;
-  width: 70%;
-}
-
-.card-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.card-title {
-  display: inline-block;
-  margin-bottom: 2px;
-}
-
-.card.hidden {
-  display: none;
-}
-
 .country-row {
   transition: all linear 0.3s ;
+  cursor: pointer;
 }
 
 .country-row:hover {
