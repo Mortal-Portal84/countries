@@ -13,3 +13,11 @@
   display: none;
 }
 
+.country-row {
+  transition: all linear 0.3s ;
+  cursor: pointer;
+}
+
+.country-row:hover {
+  background-color: #2d3237;
+}

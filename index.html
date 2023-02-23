@@ -1,38 +1,55 @@
 <!DOCTYPE html>
 <html lang="en" data-bs-theme="dark">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Rest Countries</title>
-  </head>
-  <body>
-    <div id="app">
-      <div class="container">
-        <nav class="navbar bg-body-tertiary">
-          <div class="container-fluid">
-            <form class="d-flex" role="search" id="form">
-              <input class="form-control me-2" id="input" required autocomplete="off" type="search" placeholder="Search" aria-label="Search">
-              <button class="btn btn-outline-success" type="submit" id="btn">Search</button>
-            </form>
-          </div>
-        </nav>
-        <main class="main">
-          <table class="table">
-            <thead>
-            <tr>
-              <th scope="col">#</th>
-              <th scope="col">Name</th>
-              <th scope="col">Capital</th>
-              <th scope="col">Flag</th>
-            </tr>
-            </thead>
-            <tbody id="tableBody"></tbody>
-          </table>
+</head>
+<body>
+<div id="app">
+    <nav class="navbar bg-body-tertiary px-lg-5">
+    <div class="container-fluid">
+        <form class="d-flex" role="search" id="form">
+            <input class="form-control me-2" id="input" required autocomplete="off" type="search"
+                   placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit" id="btn">Search</button>
+        </form>
+    </div>
+</nav>
+    <div class="container">
+        <main class="main" id="main">
+            <table class="table mt-5">
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Capital</th>
+                    <th scope="col">Flag</th>
+                </tr>
+                </thead>
+                <tbody id="tableBody"></tbody>
+            </table>
             <div class="not-found hidden">Country was not found!</div>
         </main>
-      </div>
     </div>
-    <script type="module" src="/src/main.ts"></script>
-  </body>
+</div>
+
+<div id="modal" class="modal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title country-title">Country</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body"></div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">OK</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="module" src="/src/main.ts"></script>
+</body>
 </html>
